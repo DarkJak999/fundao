@@ -37,12 +37,27 @@ public class Calculator {
 
     public float division(int number1, int number2){
 
-        return (float)number1 / (float)number2;
+        return number1 / (float)number2;
+    }
+
+    public double squareRoot(int number){
+
+        return Math.sqrt(number);
+    }
+
+    public int powerOf(int base, int exp){
+
+        return (int) Math.pow(base, exp);
+    }
+
+    public double logBase10(int number){
+
+        return Math.log10(number);
     }
 
     public void printMenu(){
 
-        System.out.println("You sill have " + this.battery + " battery left\n" + "Choose your operation:\n1 - Sum\n2 - Subtract\n3 - Multiplication\n4 - Division\n5 - Recharge Battery\n0 - Exit\n");
+        System.out.println("You sill have " + this.battery + " battery left\n" + "Choose your operation:\n1 - Sum\n2 - Subtract\n3 - Multiplication\n4 - Division\n5 - Square Root\n6 - Power of\n9 - Recharge Battery\n0 - Exit\n");
     }
 
     public int[] readNumbers(){
@@ -56,6 +71,17 @@ public class Calculator {
 
         return numberArray;
 
+    }
+
+    public int readSingleNumber(){
+
+        Scanner input = new Scanner(System.in);
+        int number;
+
+        System.out.println("Input the number");
+        number = input.nextInt();
+
+        return number;
     }
 
 }

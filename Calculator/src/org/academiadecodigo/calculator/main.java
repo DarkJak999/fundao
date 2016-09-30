@@ -19,6 +19,7 @@ public class main {
 
         int operation = -1;
         int[] numberArray = new int[2];
+        int number;
 
 
         while (operation != 0 && calculator.battery > 0) {
@@ -53,9 +54,25 @@ public class main {
                     calculator.battery--;
                     break;
                 case 5:
-                    //System.out.println(calculator.battery);
+                    number = calculator.readSingleNumber();
+                    System.out.println("The square root of " + number + " is: " + calculator.squareRoot(number));
+                    calculator.battery--;
+
+                    break;
+                case 6:
+                    numberArray = calculator.readNumbers();
+                    System.out.println("The power of " + numberArray[0] + " to the " + numberArray[1] + " is: " + calculator.powerOf(numberArray[0], numberArray[1]));
+                    calculator.battery--;
+                    break;
+                case 7:
+                    number = calculator.readSingleNumber();
+                    System.out.println("The log10 of " + number + " is:" + calculator.logBase10(number));
+                    calculator.battery--;
+                    break;
+
+                case 9:
                     calculator.battery = battery;
-                    //System.out.println(calculator.battery);
+                    System.out.println("Your battery as been charged!");
                     break;
                 case 0:
                     System.out.println("Bye Bye!");
@@ -70,7 +87,7 @@ public class main {
 
             System.out.println("\n");
 
-            if(calculator.battery == 0)
+            if (calculator.battery == 0)
                 System.out.println("You don't have any battery left");
 
         }
