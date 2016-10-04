@@ -5,11 +5,25 @@ package org.academiadecodigo.jankenpon;
  */
 public class RandomNumb {
 
-    public static int getNumber(int min, int max) {
+    private static int getNumber(int min, int max) {
 
+        //This is to be inclusive with the max range | ((max - min) + 1 )
 
-        int range = (max - min) + 1;
-        return (int) (Math.random() * range) + min;
+        return (int) ((Math.random() * ((max - min) + 1 )) + min);
 
     }
+
+    public static int generateInt(int max){
+
+        return getNumber(0, max);
+    }
+
+
+    /*
+
+    public static int generateBetween(int min, int max){
+
+        return getNumber(min, max);
+    }
+    */
 }

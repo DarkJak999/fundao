@@ -12,6 +12,14 @@ public class Game {
 
         int count = 0;
 
+        p1.resetWins();
+        p2.resetWins();
+
+        if(rounds % 2 == 0){
+            System.out.println("You can't have a even number of rounds - Ties are not allowed! We'll take care of that for you");
+            rounds++;
+        }
+
         while (count < rounds) {
 
             //player1 pick move
@@ -28,62 +36,45 @@ public class Game {
 
             //decide winner
             //rock > scissors | scissors > paper | paper > rock
-            if (p1.getMove() == 0 && p2.getMove() == 1) {
-                p1.setNumberOfWins(p1.getNumberOfWins() + 1);
+            if ((p1.getMove() == 0 && p2.getMove() == 1) || (p1.getMove() == 1 && p2.getMove() == 2) || (p1.getMove() == 2 && p2.getMove() == 0)) {
+                p1.increaseWins();
                 //System.out.println("player1 win");
-                count++;
-            } else if (p1.getMove() == 1 && p2.getMove() == 2) {
-                p1.setNumberOfWins(p1.getNumberOfWins() + 1);
-                //System.out.println("player1 win");
-                count++;
-            } else if (p1.getMove() == 2 && p2.getMove() == 0) {
-                p1.setNumberOfWins(p1.getNumberOfWins() + 1);
-                //System.out.println("player1 win");
-                count++;
-            }else if (p2.getMove() == 0 && p1.getMove() == 1) {
-                p2.setNumberOfWins(p2.getNumberOfWins() + 1);
-                //System.out.println("player2 win");
-                count++;
-            } else if (p2.getMove() == 1 && p1.getMove() == 2) {
-                p2.setNumberOfWins(p2.getNumberOfWins() + 1);
-                //System.out.println("player2 win");
-                count++;
-            } else if (p2.getMove() == 2 && p1.getMove() == 0) {
-                p2.setNumberOfWins(p2.getNumberOfWins() + 1);
-                //System.out.println("player2 win");
-                count++;
             }
+            else
+                p2.increaseWins();
 
-            if(p1.getNumberOfWins() > (rounds/2)){
+
+
+            if (p1.getNumberOfWins() > (rounds / 2)) {
                 System.out.println("Player 1 already won half the rounds");
                 break;
-            }
-            else if(p2.getNumberOfWins() > (rounds/2)){
+            } else if (p2.getNumberOfWins() > (rounds / 2)) {
                 System.out.println("Player 2 already won half the rounds");
                 break;
             }
 
+            count++;
+
         }
 
-        if(p1.getNumberOfWins() > p2.getNumberOfWins()){
+        if (p1.getNumberOfWins() > p2.getNumberOfWins()) {
             System.out.println("Player 1 is the winner with " + p1.getNumberOfWins() + " wins to " + p2.getNumberOfWins());
-        }
-        else {
-            System.out.println("Player 2 is the winner with " + p2.getNumberOfWins() + " wins " + p1.getNumberOfWins());
+        } else {
+            System.out.println("Player 2 is the winner with " + p2.getNumberOfWins() + " wins to " + p1.getNumberOfWins());
         }
     }
 
-    public int pickAMove(){
+    public int pickAMove() {
 
-        int number = RandomNumb.getNumber(0,2);
+        int number = RandomNumb.generateInt(2);
 
-        if(number == Move.ROCK.ordinal()){
+        //System.out.println(number);
+
+        if (number == Move.ROCK.ordinal()) {
             return Move.ROCK.ordinal();
-        }
-        else if(number == Move.PAPER.ordinal()){
+        } else if (number == Move.PAPER.ordinal()) {
             return Move.PAPER.ordinal();
-        }
-        else
+        } else
             return Move.SCISSOR.ordinal();
 
 

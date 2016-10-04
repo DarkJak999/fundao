@@ -8,7 +8,7 @@ public class Player {
     private int move; //this is gonna take the ordinal value of the enum Move
     private int numberOfWins;
 
-    Player(int numberOfWins){
+    Player(int numberOfWins) {
         this.numberOfWins = numberOfWins;
     }
 
@@ -34,5 +34,13 @@ public class Player {
 
 
     //METHODS
+
+    public void increaseWins(){
+        this.numberOfWins++;
+    }
+
+    public void resetWins(){
+        this.numberOfWins = 0;
+    }
 
 }
